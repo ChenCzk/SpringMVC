@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jsp/jquery-3.4.1.js"></script>
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+<script>
+    /*页面加载后自动触发*/
+    $(document).ready(function () {
+        var data = {
+            id: '1',
+            name: 'aaa',
+            sex: 'man',
+            page: {
+                start: 1,
+                limit: 2
+            }
+        };
+        /*$.post({
+                url:"./my/index4.do",
+                data:JSON.stringify(data),
+                co ntentType:"application/json",
+                success:function(result){
+                    alert(result)
+                }
+            }
+        );*/
+        $("#submit").click(function () {
+            $.post({
+                url:"./my/index5.do",
+                data:$("#form").serialize(),
+                success:function (result) {
+                    alter(result)
+
+                }
+            })
+        });
+
+    })
+</script>
+</head>
+<body>
+<form id="form" >
+    <table>
+        <tr>
+            <td>start</td>
+            <td><input name="start" id="start"></td>
+        </tr>
+        <tr>
+            <td>limit</td>
+            <td><input id="limit" name="limit"></td>
+        </tr>
+        <tr>
+            <td><input id="submit" type="button" value="提交"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
