@@ -1,25 +1,28 @@
-#Spring Mvc
-###1.WEB容器初始化
-    1.SpringIOC容器初始化（ContextLoadListener）
-        a.只要配置ContextLoadListener（实现ServletContextListener接口），就可以在DispatcherServlet前完成初始化。
-            在Web.xml中配置ContextLoaderListener
-            <!--配置ContextLoaderListener-->
-              <listener>
-                <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-              </listener>
-        b.如果没有配置ContextLoadListener，dispatcherServlet在初始化时会自动初始化IOC容器（不建议）。
-    
-    2.初始化映射
-        通过注解完成映射
-            @Controller:控制器、
-            @RequestMapper:指定对应的URI
-        Spring MVC会在初始化的时候解析这些信息，形成HandlerMapping。
+Spring Mvc
+===
+
+1.WEB容器初始化
+------
+        1.SpringIOC容器初始化（ContextLoadListener）
+            a.只要配置ContextLoadListener（实现ServletContextListener接口），就可以在DispatcherServlet前完成初始化。
+                在Web.xml中配置ContextLoaderListener
+                <!--配置ContextLoaderListener-->
+                  <listener>
+                    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+                  </listener>
+            b.如果没有配置ContextLoadListener，dispatcherServlet在初始化时会自动初始化IOC容器（不建议）。
+
+        2.初始化映射
+            通过注解完成映射
+                @Controller:控制器、
+                @RequestMapper:指定对应的URI
+            Spring MVC会在初始化的时候解析这些信息，形成HandlerMapping。
 
 
 
 
-###2.Spring MVC 入门：（输入网址，返回视图）
-
+2.Spring MVC 入门：（输入网址，返回视图）
+------
     使用注解配置：
         1.新建一个类继承AbstractAnnotationConfigDispatcherServletInitializer类。（类似Web.xml）
             1.getRootConfigClasses():加载Spring IOC 配置类。 return new Class<?>[]{xx.class};
@@ -103,7 +106,8 @@
 
 
 
-###3.注解介绍：
+3.注解介绍：
+------
     1.@RequestMapping:主要三个参数value，method,params，可以作用在类或方法名上。
         @RequestMapping(value = "/czk",method = RequestMethod.GET,params={"name","id=3","!sex"})//有"name"，"id=3"的参数，且不含有"sex"参数
             value:请求路径
